@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOCUSEE - Smart Home Appliances Manufacturer</title>
+<meta name="description" content="FOCUSEE - Professional manufacturer of smart home appliances. Heaters, fans, kitchen equipment. OEM/ODM supplier based in Shunde, Guangdong, China.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--orange:#F15A25;--orange-dark:#d94e1e;--dark:#333333;--text:#555555;--text-light:#7a7a7a;
+--text-muted:#999999;--bg-light:#EDF2F7;--bg-lighter:#F7FAFC;--white:#ffffff;
+--footer-bg:#54595F;--border:#e2e8f0;--max-w:1370px;
+--font:'Roboto',sans-serif;--font-slab:'Roboto Slab',serif;
+--transition:.3s ease;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font);color:var(--text);background:var(--white);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul{list-style:none}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 20px}
+
+/* HEADER */
+.header-bar{background:var(--orange);padding:12px 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:700;font-size:18px}
+.logo svg{height:42px;width:auto}
+.nav{display:flex;gap:0;align-items:center}
+.nav>li{position:relative}
+.nav>li>a,.nav>li>button{display:flex;align-items:center;gap:4px;padding:10px 18px;color:var(--white);font-size:14px;font-weight:500;letter-spacing:.3px;transition:var(--transition);background:none;border:none;cursor:pointer}
+.nav>li>a:hover,.nav>li>button:hover{background:rgba(255,255,255,.15);border-radius:4px}
+.nav-dd{position:absolute;top:100%;left:0;background:var(--white);min-width:220px;border-radius:0 0 6px 6px;box-shadow:0 8px 32px rgba(0,0,0,.12);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,visibility .2s;padding:8px 0;z-index:100}
+.nav>li:hover .nav-dd{opacity:1;visibility:visible;pointer-events:all}
+.nav-dd a{display:block;padding:8px 20px;font-size:14px;color:var(--text);transition:var(--transition)}
+.nav-dd a:hover{background:var(--bg-light);color:var(--orange)}
+.mobile-toggle{display:none;color:var(--white);font-size:24px;padding:8px}
+
+/* HERO SLIDER */
+.hero{position:relative;width:100%;overflow:hidden;background:var(--bg-lighter)}
+.hero-track{display:flex;transition:transform .6s ease}
+.hero-slide{min-width:100%;position:relative}
+.hero-slide img{width:100%;height:auto;display:block;min-height:300px;object-fit:cover}
+.hero-slide .slide-overlay{position:absolute;inset:0;display:flex;align-items:center;padding:0 8%}
+.slide-text{max-width:520px}
+.slide-text h2{font-family:var(--font-slab);font-size:clamp(28px,4vw,48px);color:var(--dark);margin-bottom:12px;line-height:1.2}
+.slide-text ul{margin:16px 0;font-size:15px;color:var(--text)}
+.slide-text ul li{padding:3px 0;padding-left:16px;position:relative}
+.slide-text ul li::before{content:'•';position:absolute;left:0;color:var(--orange)}
+.hero-arrows{position:absolute;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;padding:0 16px;z-index:5;pointer-events:none}
+.hero-arrow{pointer-events:all;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.85);border:none;font-size:22px;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.hero-arrow:hover{background:var(--orange);color:var(--white)}
+.hero-dots{position:absolute;bottom:20px;width:100%;display:flex;justify-content:center;gap:8px;z-index:5}
+.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,.2);cursor:pointer;transition:var(--transition)}
+.hero-dot.active{background:var(--orange);transform:scale(1.3)}
+
+/* VALUE PROPS */
+.value-props{padding:60px 0;background:var(--white)}
+.vp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.vp-item svg{width:48px;height:48px;stroke:var(--dark);fill:none;stroke-width:1.5;margin:0 auto 16px}
+.vp-item h3{font-size:16px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.vp-item p{font-size:13px;color:var(--text-muted)}
+
+/* PRODUCT IMAGE MOSAIC */
+.mosaic{padding:40px 0;background:var(--bg-light)}
+.mosaic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mosaic-item{position:relative;display:block;width:100%;padding:0;border:none;background:none;border-radius:4px;overflow:hidden;cursor:pointer;min-height:280px}
+.mosaic-grid img{width:100%;height:100%;object-fit:cover;border-radius:4px;transition:var(--transition)}
+.mosaic-item:hover img{filter:brightness(1.08);transform:scale(1.02)}
+.mosaic-caption{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;font-size:13px;font-weight:500;color:var(--white);background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.68) 100%);text-align:left}
+
+/* HOT SALE PRODUCTS */
+.hot-sale{padding:80px 0;background:var(--white)}
+.section-title{font-size:clamp(28px,3.5vw,43px);font-weight:600;color:#000;text-align:center;margin-bottom:48px}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.p-card{background:var(--white);border-radius:6px;overflow:hidden;transition:transform .5s ease,box-shadow .5s ease;cursor:pointer;border:1px solid transparent}
+.p-card:hover{transform:scale(1.04);box-shadow:0 12px 40px rgba(0,0,0,.1);border-color:var(--border)}
+.p-card-img{aspect-ratio:1;overflow:hidden;background:var(--bg-lighter);display:flex;align-items:center;justify-content:center;padding:8px}
+.p-card-img img{width:100%;height:100%;object-fit:contain;transition:transform .5s ease}
+.p-card:hover .p-card-img img{transform:scale(1.06)}
+.p-card-body{padding:16px 12px}
+.p-card-cat{font-size:13px;color:var(--text-muted);margin-bottom:4px}
+.p-card-body h3{font-size:15px;font-weight:500;color:var(--dark);line-height:1.3;margin-bottom:6px}
+.p-card-body p{font-size:13px;color:var(--text-light);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.read-more-btn{display:inline-block;margin-top:10px;padding:8px 24px;background:var(--orange);color:var(--white);font-size:13px;font-weight:500;border-radius:4px;transition:var(--transition)}
+.read-more-btn:hover{background:var(--orange-dark)}
+
+/* ABOUT SECTION */
+.about-section{padding:80px 0;background:var(--bg-light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-text h2{font-size:32px;font-weight:600;color:var(--dark);margin-bottom:20px}
+.about-text p{font-size:16px;color:#817c7c;line-height:1.8;margin-bottom:16px;word-spacing:2px}
+.about-text .more-link{color:var(--orange);font-weight:600;font-size:15px}
+.about-text .more-link:hover{text-decoration:underline}
+.about-img{border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.about-img img{width:100%;height:100%;object-fit:cover}
+
+/* STATS STRIP */
+.stats-strip{padding:40px 0;background:var(--orange)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-item .num{font-size:42px;font-weight:700;color:var(--white);line-height:1}
+.stat-item .label{font-size:13px;color:rgba(255,255,255,.85);margin-top:6px}
+
+/* PAGE SECTIONS (SPA) */
+.page-section{display:none}.page-section.active{display:block}
+.page-hero{padding:60px 0 40px;background:var(--bg-light);text-align:center}
+.page-hero h1{font-size:clamp(28px,4vw,42px);font-weight:600;color:var(--dark)}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:16px}
+.breadcrumb a{color:var(--orange)}.breadcrumb a:hover{text-decoration:underline}
+
+/* PRODUCTS PAGE */
+.products-page{padding:60px 0}
+.products-layout{display:grid;grid-template-columns:240px 1fr;gap:40px}
+.sidebar h4{font-size:14px;font-weight:600;color:var(--dark);padding:10px 0;border-bottom:2px solid var(--orange);margin-bottom:8px;cursor:pointer;text-transform:uppercase;letter-spacing:.5px}
+.sidebar a{display:block;padding:6px 0;font-size:13px;color:var(--text-light);transition:var(--transition)}
+.sidebar a:hover,.sidebar a.active{color:var(--orange);padding-left:8px}
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.filter-btn{padding:8px 20px;border-radius:20px;font-size:13px;font-weight:500;color:var(--text);border:2px solid var(--border);transition:var(--transition);background:var(--white)}
+.filter-btn:hover,.filter-btn.active{background:var(--orange);color:var(--white);border-color:var(--orange)}
+.products-count{font-size:13px;color:var(--text-muted);margin-bottom:16px}
+
+/* ABOUT PAGE */
+.about-page-content{padding:60px 0}
+.about-page-content .container{max-width:900px}
+.about-page-content h2{font-size:28px;font-weight:600;color:var(--dark);margin:36px 0 16px}
+.about-page-content h2:first-child{margin-top:0}
+.about-page-content p{font-size:15px;color:#817c7c;line-height:1.8;margin-bottom:16px}
+.cert-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 32px}
+.cert-badge{padding:6px 16px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:600;color:var(--orange);letter-spacing:.5px}
+.about-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:40px 0;padding:40px 0;border-top:2px solid var(--bg-light);border-bottom:2px solid var(--bg-light)}
+.about-stat-item{text-align:center}
+.about-stat-item .num{font-size:42px;font-weight:700;color:var(--orange)}
+.about-stat-item .label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* CONTACT PAGE */
+.contact-content{padding:60px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-form-wrap h3{font-size:24px;font-weight:600;color:var(--dark);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:12px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-family:var(--font);font-size:14px;color:var(--dark);transition:var(--transition)}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(241,90,37,.12)}
+.form-group textarea{height:120px;resize:vertical}
+.btn-submit{display:inline-flex;padding:12px 36px;background:var(--orange);color:var(--white);font-size:14px;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:var(--transition)}
+.btn-submit:hover{background:var(--orange-dark);transform:translateY(-1px)}
+.contact-info h3{font-size:24px;font-weight:600;color:var(--dark);margin-bottom:24px}
+.contact-person{margin-bottom:24px;padding:20px;background:var(--bg-lighter);border-radius:8px;border:1px solid var(--border)}
+.contact-person h4{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:2px}
+.contact-person .role{font-size:12px;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.contact-person .detail{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-light);margin-bottom:6px}
+.contact-person .detail svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;flex-shrink:0}
+.contact-address{padding:20px;background:var(--bg-lighter);border-radius:8px;border:1px solid var(--border);margin-top:20px}
+.contact-address h4{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.contact-address p{font-size:14px;color:var(--text-light);line-height:1.6}
+
+/* FAQs */
+.faqs-content{padding:60px 0}
+.faqs-content .container{max-width:800px}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:16px;font-weight:500;color:var(--dark);transition:var(--transition);gap:16px}
+.faq-q:hover{color:var(--orange)}
+.faq-q .icon{width:24px;height:24px;border-radius:50%;background:var(--bg-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;color:var(--orange);transition:transform .3s}
+.faq-item.open .faq-q .icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s;font-size:14px;color:var(--text-light);line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding-top:12px}
+
+/* PRODUCT DETAIL */
+.detail-page{padding:40px 0}
+.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;margin-bottom:48px}
+.detail-gallery,.detail-info{position:relative;min-width:0}
+.detail-main-img{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;padding:10px}
+.detail-main-img img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;transition:opacity .4s}
+/* Thumbnail carousel */
+.thumb-carousel{position:relative;overflow:hidden;max-width:100%}
+.thumb-carousel.is-hidden{display:none}
+.thumb-track{display:flex;gap:10px;transition:transform .4s ease;width:max-content;min-width:100%;max-width:100%}
+.thumb-item{width:110px;height:110px;flex-shrink:0;border:2px solid var(--border);border-radius:6px;overflow:hidden;cursor:pointer;transition:var(--transition);background:var(--white);box-sizing:border-box}
+.thumb-item:hover,.thumb-item.active{border-color:var(--orange)}
+.thumb-item img{width:100%;height:100%;object-fit:cover}
+.detail-info .cat-label{font-size:13px;color:var(--orange);font-weight:500;margin-bottom:8px;cursor:pointer}
+.detail-info .cat-label:hover{text-decoration:underline}
+.detail-info h1{font-size:clamp(22px,3vw,30px);font-weight:600;color:#000;line-height:1.3;margin-bottom:12px}
+.detail-info .short-desc{font-size:15px;color:var(--text-light);margin-bottom:16px}
+.detail-info .cat-tag{font-size:13px;color:var(--text-muted)}
+.detail-info .cat-tag a{color:var(--orange)}
+.detail-tabs{border-top:3px solid var(--orange);margin-top:24px;padding-top:20px}
+.tab-buttons{display:flex;gap:24px;margin-bottom:20px}
+.tab-btn{font-size:15px;font-weight:500;color:var(--text-muted);padding-bottom:8px;border-bottom:2px solid transparent;cursor:pointer;transition:var(--transition)}
+.tab-btn.active{color:var(--dark);border-bottom-color:var(--orange)}
+.tab-content{font-size:14px;color:var(--text);line-height:1.8}
+.tab-content ul{list-style:disc;padding-left:20px;margin:12px 0}
+.tab-content ul li{margin-bottom:6px}
+.detail-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.inquire-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 28px;background:var(--orange);color:var(--white);font-size:14px;font-weight:600;border-radius:8px;box-shadow:0 8px 20px rgba(241,90,37,.18);transition:var(--transition)}
+.inquire-btn:hover{background:var(--orange-dark);transform:translateY(-1px)}
+.detail-section-title{font-size:16px;font-weight:600;color:var(--dark);margin:18px 0 8px}
+.detail-note{font-size:13px;color:var(--text-muted);margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+
+/* RELATED PRODUCTS CAROUSEL */
+.related-section{padding:48px 0;border-top:1px solid var(--border)}
+.related-section h2{font-size:28px;font-weight:600;color:#000;margin-bottom:32px}
+.related-carousel{position:relative;overflow:hidden}
+.related-track{display:flex;gap:24px;transition:transform .5s ease}
+.related-card{flex:0 0 calc(25% - 18px);background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:transform .4s,box-shadow .4s;cursor:pointer}
+.related-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.related-card img{width:100%;aspect-ratio:1;object-fit:contain;background:var(--bg-lighter);padding:12px}
+.related-card-body{padding:14px}
+.related-card-body .cat{font-size:12px;color:var(--orange);margin-bottom:4px}
+.related-card-body h4{font-size:14px;font-weight:500;color:var(--dark);line-height:1.3;margin-bottom:8px}
+.related-card-body .stars{color:#ccc;font-size:12px;margin-bottom:8px}
+.related-card-body .read-more-btn{display:inline-block;padding:7px 20px;font-size:12px}
+.carousel-arrows{position:absolute;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;pointer-events:none;padding:0 0;z-index:3}
+.carousel-arrow{pointer-events:all;width:36px;height:36px;border-radius:50%;background:var(--white);border:1px solid var(--border);font-size:16px;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.carousel-arrow:hover{background:var(--orange);color:var(--white);border-color:var(--orange)}
+
+/* FOOTER */
+.footer{background:var(--footer-bg);padding:60px 0 0;color:var(--white)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding-bottom:40px}
+.footer h4{font-size:16px;font-weight:600;margin-bottom:16px;text-transform:uppercase;letter-spacing:.5px}
+.footer p,.footer a{font-size:13px;color:rgba(255,255,255,.75);line-height:1.8}
+.footer a:hover{color:var(--white)}
+.footer-links a{display:block;padding:3px 0;transition:var(--transition)}
+.footer-links a:hover{padding-left:4px;color:var(--orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.15);padding:20px 0;text-align:center;font-size:12px;color:rgba(255,255,255,.5)}
+
+/* SCROLL TOP */
+.scroll-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;background:var(--orange);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;opacity:0;transition:var(--transition);z-index:999;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.scroll-top.show{opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.nav{display:none}.mobile-toggle{display:block}
+.vp-grid{grid-template-columns:repeat(2,1fr)}
+.product-grid{grid-template-columns:repeat(3,1fr)}
+.about-grid{grid-template-columns:1fr}
+.about-img{max-height:300px}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.products-layout{grid-template-columns:1fr}
+.products-layout .sidebar{display:none}
+.contact-grid{grid-template-columns:1fr}
+.detail-layout{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+.related-card{flex:0 0 calc(50% - 12px)}
+.mosaic-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+.product-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+.vp-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.about-stats-row{grid-template-columns:repeat(2,1fr)}
+.mosaic-grid{grid-template-columns:1fr}
+.related-card{flex:0 0 calc(100%)}
+.detail-page{padding:24px 0}
+.tab-buttons{gap:14px;flex-wrap:wrap}
+.thumb-track{gap:8px}
+.thumb-item{width:90px;height:90px}
+.breadcrumb{overflow-wrap:anywhere}
+}
+
+/* Mobile nav overlay */
+.mobile-nav{display:none;position:fixed;inset:0;z-index:3000;background:var(--white)}
+.mobile-nav.open{display:flex;flex-direction:column}
+.mobile-nav-header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--orange)}
+.mobile-nav-body{flex:1;overflow-y:auto;padding:20px}
+.mobile-nav-body a,.mobile-nav-body button{display:block;width:100%;text-align:left;padding:12px 0;color:var(--dark);font-size:15px;font-weight:500;border:none;background:none;border-bottom:1px solid var(--border)}
+.mobile-nav-body a:hover{color:var(--orange)}
+.mobile-sub{padding-left:16px;display:none}.mobile-sub.open{display:block}
+.mobile-sub a{font-size:14px;color:var(--text-light);font-weight:400}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeIn .5s ease forwards}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header class="header-bar">
+<div class="container header-inner">
+<a href="#" class="logo" onclick="showPage('home');return false;">
+<svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><polygon points="21,4 38,38 4,38" fill="none" stroke="#fff" stroke-width="2.5"/><text x="12" y="32" font-family="Roboto" font-size="14" font-weight="700" fill="#fff">F</text></svg>
+FOCUSEE
+</a>
+<ul class="nav" id="mainNav">
+<li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+<li>
+<button onclick="showPage('products');return false;">Products &#9662;</button>
+<div class="nav-dd">
+<a href="#" onclick="showProducts('heater');return false;">Heater</a>
+<a href="#" onclick="showProducts('fan-heater');return false;">Fan Heater</a>
+<a href="#" onclick="showProducts('fan');return false;">Fan</a>
+<a href="#" onclick="showProducts('electric-kettle');return false;">Electric Kettle</a>
+<a href="#" onclick="showProducts('mini-cooker');return false;">Mini Cooker</a>
+<a href="#" onclick="showProducts('food-chopper');return false;">Food Chopper</a>
+<a href="#" onclick="showProducts('food-cooler-pan');return false;">Food Cooler Pan</a>
+<a href="#" onclick="showProducts('induction-cooker');return false;">Induction Cooker</a>
+<a href="#" onclick="showProducts('rice-cooker');return false;">Rice Cooker</a>
+<a href="#" onclick="showProducts('fried-ice-machine');return false;">Fried Ice Machine</a>
+</div>
+</li>
+<li><a href="#" onclick="showPage('about');return false;">About FOCUSEE</a></li>
+<li><a href="#" onclick="showPage('contact');return false;">Contact Us</a></li>
+<li><a href="#" onclick="showPage('faqs');return false;">FAQs</a></li>
+</ul>
+<button class="mobile-toggle" onclick="toggleMobileNav()">&#9776;</button>
+</div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+<div class="mobile-nav-header">
+<span style="color:#fff;font-weight:700;font-size:18px">FOCUSEE</span>
+<button onclick="toggleMobileNav()" style="color:#fff;font-size:26px;background:none;border:none">&times;</button>
+</div>
+<div class="mobile-nav-body">
+<a href="#" onclick="showPage('home');toggleMobileNav();return false;">Home</a>
+<button onclick="this.nextElementSibling.classList.toggle('open')">Products &#9662;</button>
+<div class="mobile-sub">
+<a href="#" onclick="showProducts('heater');toggleMobileNav();return false;">Heater</a>
+<a href="#" onclick="showProducts('fan-heater');toggleMobileNav();return false;">Fan Heater</a>
+<a href="#" onclick="showProducts('fan');toggleMobileNav();return false;">Fan</a>
+<a href="#" onclick="showProducts('electric-kettle');toggleMobileNav();return false;">Electric Kettle</a>
+<a href="#" onclick="showProducts('mini-cooker');toggleMobileNav();return false;">Mini Cooker</a>
+<a href="#" onclick="showProducts('food-chopper');toggleMobileNav();return false;">Food Chopper</a>
+<a href="#" onclick="showProducts('fried-ice-machine');toggleMobileNav();return false;">Fried Ice Machine</a>
+</div>
+<a href="#" onclick="showPage('about');toggleMobileNav();return false;">About FOCUSEE</a>
+<a href="#" onclick="showPage('contact');toggleMobileNav();return false;">Contact Us</a>
+<a href="#" onclick="showPage('faqs');toggleMobileNav();return false;">FAQs</a>
+</div>
+</div>
+<!-- ==================== PAGE: HOME ==================== -->
+<div id="page-home" class="page-section active">
+<!-- Hero Slider -->
+<section class="hero">
+<div class="hero-track" id="heroTrack">
+<div class="hero-slide">
+<img src="images/reference/banner-fan-series.jpg" alt="FOCUSEE fan series banner">
+</div>
+<div class="hero-slide">
+<img src="images/reference/banner-heater.jpg" alt="FOCUSEE heater banner">
+</div>
+<div class="hero-slide">
+<img src="images/reference/banner-bathroom-living.jpg" alt="FOCUSEE bathroom and living products banner">
+</div>
+<div class="hero-slide">
+<img src="images/reference/banner-kitchen-appliances.jpg" alt="FOCUSEE kitchen appliances banner">
+</div>
+<div class="hero-slide">
+<img src="images/reference/banner-factory-honor.jpg" alt="FOCUSEE factory and certification banner">
+</div>
+</div>
+<div class="hero-arrows">
+<button class="hero-arrow" onclick="moveHero(-1)">&#10094;</button>
+<button class="hero-arrow" onclick="moveHero(1)">&#10095;</button>
+</div>
+<div class="hero-dots">
+<span class="hero-dot active" onclick="goHero(0)"></span>
+<span class="hero-dot" onclick="goHero(1)"></span>
+<span class="hero-dot" onclick="goHero(2)"></span>
+<span class="hero-dot" onclick="goHero(3)"></span>
+<span class="hero-dot" onclick="goHero(4)"></span>
+</div>
+</section>
+<!-- Value Props -->
+<section class="value-props">
+<div class="container">
+<div class="vp-grid">
+<div class="vp-item">
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4L6 14v20l18 10 18-10V14L24 4z"/><polyline points="16 24 22 30 34 18"/></svg>
+<h3>Quality Assurance</h3>
+<p>ISO certified manufacturing processes</p>
+</div>
+<div class="vp-item">
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="14" r="8"/><path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16"/></svg>
+<h3>Professional Team</h3>
+<p>10+ years experienced R&amp;D engineers</p>
+</div>
+<div class="vp-item">
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 38V18l18-12 18 12v20"/><path d="M18 38V28h12v10"/></svg>
+<h3>Rich Experience</h3>
+<p>Decade-long expertise in home appliances</p>
+</div>
+<div class="vp-item">
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="10" width="36" height="28" rx="3"/><path d="M6 18h36"/><circle cx="24" cy="30" r="5"/></svg>
+<h3>OEM/ODM Service</h3>
+<p>Customized solutions for your brand</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Image Mosaic -->
+<section class="mosaic">
+<div class="container">
+<div class="mosaic-grid">
+<button class="mosaic-item" type="button" onclick="showDetail('hth0011')"><img src="images/products/HT-H001-1/img_1.jpg" alt="1800W Wall Mounted Bathroom Heater"><span class="mosaic-caption">1800W Wall Mounted Bathroom Heater</span></button>
+<button class="mosaic-item" type="button" onclick="showDetail('htmn05a1')"><img src="images/products/HT-MN05A-1/img_1.jpg" alt="Camping Outdoor PTC Portable Mini Electric Fan Heater"><span class="mosaic-caption">Camping Outdoor PTC Portable Mini Electric Fan Heater</span></button>
+<button class="mosaic-item" type="button" onclick="showDetail('ftwf12011')"><img src="images/products/FT-WF-12-01-1/img_1.jpg" alt="12 inch Folding Fan Portable USB Desk Standing Fan"><span class="mosaic-caption">12 inch Folding Fan Portable USB Desk Standing Fan</span></button>
+<button class="mosaic-item" type="button" onclick="showDetail('680')"><img src="images/products/680/main.jpg" alt="2 In 1 Portable Foldable Multi-Functional Electric Kettle"><span class="mosaic-caption">2 In 1 Portable Foldable Multi-Functional Electric Kettle</span></button>
+<button class="mosaic-item" type="button" onclick="showDetail('ic2200')"><img src="images/products/IC-2200/img_1.jpg" alt="2200W Multi Functional Electric Cooker Stove"><span class="mosaic-caption">2200W Multi Functional Electric Cooker Stove</span></button>
+<button class="mosaic-item" type="button" onclick="showDetail('fim001')"><img src="images/products/FIM-001/img_1.jpg" alt="Homemade Fruit Ice Stir Frying Machine"><span class="mosaic-caption">Homemade Fruit Ice Stir Frying Machine</span></button>
+</div>
+</div>
+</section>
+<!-- Hot Sale Products -->
+<section class="hot-sale">
+<div class="container">
+<h2 class="section-title">HOT SALE PRODUCTS</h2>
+<div class="filter-row">
+<button class="filter-btn active" onclick="filterHome('all')">All</button>
+<button class="filter-btn" onclick="filterHome('heater')">Heater</button>
+<button class="filter-btn" onclick="filterHome('fan-heater')">Fan Heater</button>
+<button class="filter-btn" onclick="filterHome('fan')">Fan</button>
+<button class="filter-btn" onclick="filterHome('electric-kettle')">Electric Kettle</button>
+<button class="filter-btn" onclick="filterHome('mini-cooker')">Mini Cooker</button>
+<button class="filter-btn" onclick="filterHome('food-chopper')">Food Chopper</button>
+<button class="filter-btn" onclick="filterHome('food-cooler-pan')">Food Cooler Pan</button>
+<button class="filter-btn" onclick="filterHome('induction-cooker')">Induction Cooker</button>
+<button class="filter-btn" onclick="filterHome('rice-cooker')">Rice Cooker</button>
+<button class="filter-btn" onclick="filterHome('fried-ice-machine')">Fried Ice Machine</button>
+</div>
+<div id="homeProductGrid" class="product-grid"></div>
+</div>
+</section>
+<!-- About Preview -->
+<section class="about-section">
+<div class="container">
+<div class="about-grid">
+<div class="about-text">
+<h2>About FOCUSEE</h2>
+<p>FOCUSEE is a professional manufacturer of smart home appliances located in ShunDe, Guangdong — the Capital of China's Household Electrical Appliances. With over 10 years of manufacturing experience, our dedicated R&amp;D team continuously innovates to deliver reliable, high-quality products for global markets.</p>
+<p>We specialize in OEM/ODM solutions, offering customized manufacturing services to help brands worldwide bring their vision to life.</p>
+<a href="#" class="more-link" onclick="showPage('about');return false;">Learn More &rarr;</a>
+</div>
+<div class="about-img">
+<img src="images/reference/about-factory-building.jpg" alt="FOCUSEE Factory">
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Strip -->
+<section class="stats-strip">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><div class="num">10+</div><div class="label">Years Experience</div></div>
+<div class="stat-item"><div class="num">8+</div><div class="label">R&amp;D Engineers</div></div>
+<div class="stat-item"><div class="num">30+</div><div class="label">Patents</div></div>
+<div class="stat-item"><div class="num">100K+</div><div class="label">Monthly Output</div></div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== PAGE: PRODUCTS ==================== -->
+<div id="page-products" class="page-section">
+<!-- Products Page Hero -->
+<div class="page-hero">
+<div class="container">
+<div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">Home</a> / Products</div>
+<h1>Our Products</h1>
+</div>
+</div>
+<!-- Products Page Content -->
+<section class="products-page">
+<div class="container">
+<div class="products-layout">
+<aside class="sidebar">
+<h4>Categories</h4>
+<a href="#" class="active" onclick="showProducts('all');return false;">All Products</a>
+<a href="#" onclick="showProducts('heater');return false;">Heater</a>
+<a href="#" onclick="showProducts('fan-heater');return false;">Fan Heater</a>
+<a href="#" onclick="showProducts('fan');return false;">Fan</a>
+<a href="#" onclick="showProducts('electric-kettle');return false;">Electric Kettle</a>
+<a href="#" onclick="showProducts('mini-cooker');return false;">Mini Cooker</a>
+<a href="#" onclick="showProducts('food-chopper');return false;">Food Chopper</a>
+<a href="#" onclick="showProducts('food-cooler-pan');return false;">Food Cooler Pan</a>
+<a href="#" onclick="showProducts('induction-cooker');return false;">Induction Cooker</a>
+<a href="#" onclick="showProducts('rice-cooker');return false;">Rice Cooker</a>
+<a href="#" onclick="showProducts('fried-ice-machine');return false;">Fried Ice Machine</a>
+</aside>
+<div class="products-main">
+<div class="filter-row">
+<button class="filter-btn active" onclick="filterProducts('all')">All</button>
+<button class="filter-btn" onclick="filterProducts('heater')">Heater</button>
+<button class="filter-btn" onclick="filterProducts('fan-heater')">Fan Heater</button>
+<button class="filter-btn" onclick="filterProducts('fan')">Fan</button>
+<button class="filter-btn" onclick="filterProducts('electric-kettle')">Electric Kettle</button>
+<button class="filter-btn" onclick="filterProducts('mini-cooker')">Mini Cooker</button>
+<button class="filter-btn" onclick="filterProducts('food-chopper')">Food Chopper</button>
+<button class="filter-btn" onclick="filterProducts('food-cooler-pan')">Food Cooler Pan</button>
+<button class="filter-btn" onclick="filterProducts('induction-cooker')">Induction Cooker</button>
+<button class="filter-btn" onclick="filterProducts('rice-cooker')">Rice Cooker</button>
+<button class="filter-btn" onclick="filterProducts('fried-ice-machine')">Fried Ice Machine</button>
+</div>
+<div class="products-count">Showing <span id="productsCount">0</span> products</div>
+<div id="productsGrid" class="product-grid"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== PAGE: ABOUT ==================== -->
+<div id="page-about" class="page-section">
+<!-- About Page Hero -->
+<div class="page-hero">
+<div class="container">
+<div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">Home</a> / About</div>
+<h1>About FOCUSEE</h1>
+</div>
+</div>
+<!-- About Page Content -->
+<section class="about-page-content">
+<div class="container">
+<h2>Our Company</h2>
+<p>FOCUSEE is located in ShunDe, Guangdong — the Capital of China's Household Electrical Appliances. With over 10 years of manufacturing experience, we have established ourselves as a trusted supplier of high-quality home appliances for global markets.</p>
+<p>Our state-of-the-art facility houses advanced production lines and a dedicated team of professionals committed to delivering innovative products that meet the highest international standards.</p>
+<img src="images/reference/about-wwf-company.jpg" alt="FOCUSEE company and workshops" style="width:100%;border-radius:8px;margin:24px 0">
+<div class="about-stats-row">
+<div class="about-stat-item"><div class="num">10+</div><div class="label">Years Experience</div></div>
+<div class="about-stat-item"><div class="num">8+</div><div class="label">R&amp;D Engineers</div></div>
+<div class="about-stat-item"><div class="num">30+</div><div class="label">Patents</div></div>
+<div class="about-stat-item"><div class="num">100K+</div><div class="label">Monthly Output</div></div>
+</div>
+<h2>Certifications</h2>
+<p>Our products have obtained numerous international certifications, ensuring quality and compliance across all markets:</p>
+<div class="cert-row">
+<span class="cert-badge">PSE</span>
+<span class="cert-badge">KC</span>
+<span class="cert-badge">BSMI</span>
+<span class="cert-badge">CE</span>
+<span class="cert-badge">EMC</span>
+<span class="cert-badge">LVD</span>
+<span class="cert-badge">ERP</span>
+<span class="cert-badge">RoHS</span>
+<span class="cert-badge">CB</span>
+<span class="cert-badge">GS</span>
+</div>
+<img src="images/reference/about-wwf-lab-cert.jpg" alt="FOCUSEE laboratory and certifications" style="width:100%;border-radius:8px;margin:8px 0 24px">
+<h2>Our Mission</h2>
+<p>We are committed to providing innovative, reliable, and energy-efficient home appliances. Through continuous R&amp;D investment and strict quality control, we aim to be the preferred OEM/ODM partner for brands worldwide, helping them deliver exceptional products to their customers.</p>
+</div>
+</section>
+</div>
+<!-- ==================== PAGE: CONTACT ==================== -->
+<div id="page-contact" class="page-section">
+<!-- Contact Page Hero -->
+<div class="page-hero">
+<div class="container">
+<div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">Home</a> / Contact</div>
+<h1>Contact Us</h1>
+</div>
+</div>
+<!-- Contact Page Content -->
+<section class="contact-content">
+<div class="container">
+<div class="contact-grid">
+<div class="contact-form-wrap">
+<h3>Send Us a Message</h3>
+<form onsubmit="return false;">
+<div class="form-group">
+<label for="contactName">Your Name</label>
+<input type="text" id="contactName" placeholder="Enter your name">
+</div>
+<div class="form-group">
+<label for="contactEmail">Email Address</label>
+<input type="email" id="contactEmail" placeholder="Enter your email">
+</div>
+<div class="form-group">
+<label for="contactSubject">Subject</label>
+<input type="text" id="contactSubject" placeholder="Enter subject">
+</div>
+<div class="form-group">
+<label for="contactMessage">Message</label>
+<textarea id="contactMessage" placeholder="Enter your message"></textarea>
+</div>
+<button type="submit" class="btn-submit">Send Message</button>
+</form>
+</div>
+<div class="contact-info">
+<h3>Get in Touch</h3>
+<div class="contact-person">
+<h4>Carol Luo</h4>
+<div class="role">General Manager</div>
+<div class="detail">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+<span>carol.luo@focuseetech.com</span>
+</div>
+<div class="detail">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.34a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.74-1.25a2 2 0 012.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0122 16.92z"/></svg>
+<span>WhatsApp: +86 13378482598</span>
+</div>
+</div>
+<div class="contact-person">
+<h4>Robert Luo</h4>
+<div class="role">Marketing Manager</div>
+<div class="detail">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+<span>Marketing@focuseetech.com</span>
+</div>
+<div class="detail">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.34a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.74-1.25a2 2 0 012.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0122 16.92z"/></svg>
+<span>WhatsApp: +86 13425651968</span>
+</div>
+</div>
+<div class="contact-address">
+<h4>Factory Address</h4>
+<div class="detail" style="align-items:flex-start;margin-bottom:0">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;flex-shrink:0;stroke:var(--orange);fill:none;stroke-width:2;margin-top:3px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<p>No. 143-2, Xinrong Road, Dagang Town, Nansha District, Guangzhou City, China</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== PAGE: FAQs ==================== -->
+<div id="page-faqs" class="page-section">
+<!-- FAQs Page Hero -->
+<div class="page-hero">
+<div class="container">
+<div class="breadcrumb"><a href="#" onclick="showPage('home');return false;">Home</a> / FAQs</div>
+<h1>FAQs</h1>
+</div>
+</div>
+<!-- FAQs Content -->
+<section class="faqs-content">
+<div class="container">
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span>What products does FOCUSEE manufacture?</span>
+<span class="icon">+</span>
+</div>
+<div class="faq-a">
+<p>We manufacture a wide range of home appliances including heaters, fan heaters, fans, electric kettles, mini cookers, food choppers, food cooler pans, induction cookers, rice cookers, and fried ice machines.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span>Do you offer OEM/ODM services?</span>
+<span class="icon">+</span>
+</div>
+<div class="faq-a">
+<p>Yes, we provide full OEM/ODM solutions. Our experienced R&amp;D team can work with you to develop custom products tailored to your brand requirements, from design and prototyping to mass production.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span>What certifications do your products have?</span>
+<span class="icon">+</span>
+</div>
+<div class="faq-a">
+<p>Our products hold a wide range of international certifications including PSE, KC, BSMI, CE, EMC, LVD, ERP, RoHS, CB, and GS, ensuring compliance with quality standards across global markets.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span>What is your minimum order quantity?</span>
+<span class="icon">+</span>
+</div>
+<div class="faq-a">
+<p>MOQ varies by product type and customization level. Generally, our MOQ ranges from 500 to 3,000 units depending on the product. Please contact our sales team for specific MOQ information.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span>Where is your factory located?</span>
+<span class="icon">+</span>
+</div>
+<div class="faq-a">
+<p>Our factory is located in ShunDe, Guangdong, China — known as the Capital of China's Household Electrical Appliances. This strategic location gives us access to a mature supply chain and skilled workforce.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span>What is your production capacity?</span>
+<span class="icon">+</span>
+</div>
+<div class="faq-a">
+<p>Our facility has a production capacity of over 100,000 units monthly. We can scale production based on order requirements and seasonal demand fluctuations.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span>What is the typical lead time for orders?</span>
+<span class="icon">+</span>
+</div>
+<div class="faq-a">
+<p>Standard orders typically take 30-45 days from confirmation. OEM/ODM projects with custom designs may require 45-60 days including sampling and approval phases.</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span>Do you provide product samples?</span>
+<span class="icon">+</span>
+</div>
+<div class="faq-a">
+<p>Yes, we provide product samples for evaluation. Sample lead time is usually 7-15 days. Please contact our sales team to request samples and discuss your requirements.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== PAGE: PRODUCT DETAIL ==================== -->
+<div id="page-detail" class="page-section">
+<!-- Product Detail Content -->
+<section class="detail-page">
+<div class="container">
+<div class="breadcrumb" style="margin-bottom:24px"><a href="#" onclick="showPage('home');return false;">Home</a> / <a href="#" onclick="showPage('products');return false;">Products</a> / <span id="detailBreadcrumb">Product</span></div>
+<div class="detail-layout">
+<div class="detail-gallery">
+<div class="detail-main-img">
+<img id="detailMainImg" src="" alt="Product Image">
+</div>
+<div class="thumb-carousel">
+<div class="thumb-track" id="detailThumbs"></div>
+</div>
+</div>
+<div class="detail-info">
+<div class="cat-label" id="detailCat" onclick="showProducts(this.dataset.cat);return false;"></div>
+<h1 id="detailName"></h1>
+<p class="short-desc" id="detailDesc"></p>
+<div class="cat-tag">Category: <a href="#" id="detailCatLink" onclick="showProducts(this.dataset.cat);return false;"></a></div>
+<div class="detail-cta-row">
+<button class="inquire-btn" type="button" id="detailInquireBtn" onclick="addToInquire()">Add to Inquire</button>
+</div>
+<div class="detail-tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" onclick="switchTab('tabDesc',this)">Description</button>
+<button class="tab-btn" onclick="switchTab('tabSpecs',this)">Specifications</button>
+</div>
+<div class="tab-content" id="tabDesc"></div>
+<div class="tab-content" id="tabSpecs" style="display:none"></div>
+</div>
+</div>
+</div>
+<!-- Related Products -->
+<section class="related-section">
+<h2>Related Products</h2>
+<div class="related-carousel">
+<div class="related-track" id="relatedTrack"></div>
+<div class="carousel-arrows">
+<button class="carousel-arrow" onclick="moveRelated(-1)">&#10094;</button>
+<button class="carousel-arrow" onclick="moveRelated(1)">&#10095;</button>
+</div>
+</div>
+</section>
+</div>
+</section>
+</div>
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div>
+<h4>FOCUSEE</h4>
+<p>Professional manufacturer of smart home appliances based in Guangdong, China. Specializing in heaters, fans, and kitchen appliances with 10+ years of OEM/ODM experience.</p>
+<p style="margin-top:12px">
+<svg style="width:14px;height:14px;vertical-align:middle;stroke:#F15A25;fill:none;stroke-width:2;margin-right:4px" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+carol.luo@focuseetech.com
+</p>
+<p>
+<svg style="width:14px;height:14px;vertical-align:middle;stroke:#F15A25;fill:none;stroke-width:2;margin-right:4px" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.35a2 2 0 01-.45 2.11L8.09 9.43a16 16 0 006.49 6.49l1.25-1.25a2 2 0 012.11-.45c.75.32 1.54.55 2.35.68a2 2 0 011.72 2.01z"/></svg>
++86 13378482598
+</p>
+</div>
+<div class="footer-links">
+<h4>Products</h4>
+<a href="#" onclick="showProducts('heater');return false;">Heaters</a>
+<a href="#" onclick="showProducts('fan-heater');return false;">Fan Heaters</a>
+<a href="#" onclick="showProducts('fan');return false;">Fans</a>
+<a href="#" onclick="showProducts('electric-kettle');return false;">Electric Kettles</a>
+<a href="#" onclick="showProducts('mini-cooker');return false;">Mini Cookers</a>
+<a href="#" onclick="showProducts('induction-cooker');return false;">Induction Cookers</a>
+<a href="#" onclick="showProducts('rice-cooker');return false;">Rice Cookers</a>
+</div>
+<div class="footer-links">
+<h4>Company</h4>
+<a href="#" onclick="showPage('about');return false;">About FOCUSEE</a>
+<a href="#" onclick="showPage('products');return false;">All Products</a>
+<a href="#" onclick="showPage('contact');return false;">Contact Us</a>
+<a href="#" onclick="showPage('faqs');return false;">FAQs</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="container">&copy; 2024 FOCUSEE. All rights reserved. | Smart Home Appliances Manufacturer</div>
+</div>
+</footer>
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#9650;</div>
+<script>
+/* === PRODUCT DATA === */
+var ALL_PRODUCTS=[{id:"hth0011",cat:"heater",name:"1800W Wall Mounted Bathroom Heater",model:"HT-H001",desc:"LED Display, UV Sterilization, 5H Timer, IPX2 Waterproof, Adjustable Vent",img:"images/products/HT-H001-1/img_1.jpg",images:"images/products/HT-H001-1/img_1.jpg,images/products/HT-H001-1/img_2.jpg,images/products/HT-H001-1/same_19.png,images/products/HT-H001-1/same_31.jpg,images/products/HT-H001-1/same_46.jpg,images/products/HT-H001-1/same_9.jpg"},
+{id:"hth0012",cat:"heater",name:"1800W Wall Mounted Bathroom Heater",model:"HT-H001",desc:"LED Display, UV Sterilization, 5H Timer, IPX2 Waterproof, Adjustable Vent",img:"images/products/HT-H001-2/same_19.png",images:"images/products/HT-H001-2/same_19.png,images/products/HT-H001-2/same_31.jpg,images/products/HT-H001-2/same_46.jpg,images/products/HT-H001-2/same_48.jpg,images/products/HT-H001-2/same_9.jpg"},
+{id:"hth0013",cat:"heater",name:"1800W Wall Mounted Bathroom Heater",model:"HT-H001",desc:"LED Display, UV Sterilization, 5H Timer, IPX2 Waterproof, Adjustable Vent",img:"images/products/HT-H001-3/img_1.jpg",images:"images/products/HT-H001-3/img_1.jpg,images/products/HT-H001-3/same_31.jpg,images/products/HT-H001-3/same_46.jpg,images/products/HT-H001-3/same_48.jpg,images/products/HT-H001-3/same_9.jpg"},
+{id:"hth0021",cat:"heater",name:"2000W Wall Mounted Desk Bathroom Heater",model:"HT-H002",desc:"2000W Powerful Heating, 8H Timer, UV Sterilization, IPX2 Waterproof",img:"images/products/HT-H002-1/img_1.jpg",images:"images/products/HT-H002-1/img_1.jpg,images/products/HT-H002-1/img_3.png,images/products/HT-H002-1/img_4.jpg,images/products/HT-H002-1/same_36.jpg,images/products/HT-H002-1/same_39.png,images/products/HT-H002-1/same_40.jpg"},
+{id:"hth0022",cat:"heater",name:"2000W Wall Mounted Desk Bathroom Heater",model:"HT-H002",desc:"2000W Powerful Heating, 8H Timer, UV Sterilization, IPX2 Waterproof",img:"images/products/HT-H002-2/img_1.jpg",images:"images/products/HT-H002-2/img_1.jpg,images/products/HT-H002-2/img_2.jpg,images/products/HT-H002-2/same_36.jpg,images/products/HT-H002-2/same_39.png,images/products/HT-H002-2/same_40.jpg"},
+{id:"hth006",cat:"heater",name:"Upright Thermostat Electric Fan Heater",model:"HT-H006",desc:"2000W, Thermostat Control, 8H Timer, 50 Degree Oscillation, Overheat & Tip-over Protection",img:"images/products/HT-H006/img_1.jpg",images:"images/products/HT-H006/img_1.jpg,images/products/HT-H006/img_2.png,images/products/HT-H006/img_3.png"},
+{id:"htmn0101",cat:"fan-heater",name:"Handle 800W 1000W 1200W Handy Fan Heater",model:"HT-MN010",desc:"Portable Fan Heater, 8H Timer, Adjustable Air Vent, Overheat Protection",img:"images/products/HT-MN010-1/img_1.jpg",images:"images/products/HT-MN010-1/img_1.jpg,images/products/HT-MN010-1/img_3.png,images/products/HT-MN010-1/same_1.jpg"},
+{id:"htmn0102",cat:"fan-heater",name:"Handle 800W 1000W 1200W Handy Fan Heater",model:"HT-MN010",desc:"Portable Fan Heater, 8H Timer, Adjustable Air Vent, Overheat Protection",img:"images/products/HT-MN010-2/same_1.jpg",images:"images/products/HT-MN010-2/same_1.jpg,images/products/HT-MN010-2/same_15.jpg,images/products/HT-MN010-2/same_22.jpg,images/products/HT-MN010-2/same_4.jpg,images/products/HT-MN010-2/same_45.jpg"},
+{id:"htmn0103",cat:"fan-heater",name:"Handle 800W 1000W 1200W Handy Fan Heater",model:"HT-MN010",desc:"Portable Fan Heater, 8H Timer, Adjustable Air Vent, Overheat Protection",img:"images/products/HT-MN010-3/main.jpg",images:"images/products/HT-MN010-3/main.jpg,images/products/HT-MN010-3/same_1.jpg,images/products/HT-MN010-3/same_15.jpg,images/products/HT-MN010-3/same_4.jpg,images/products/HT-MN010-3/same_45.jpg"},
+{id:"htmn0104",cat:"fan-heater",name:"Handle 800W 1000W 1200W Handy Fan Heater",model:"HT-MN010",desc:"Portable Fan Heater, 8H Timer, Adjustable Air Vent, Overheat Protection",img:"images/products/HT-MN010-4/main.jpg",images:"images/products/HT-MN010-4/main.jpg,images/products/HT-MN010-4/same_10.jpg,images/products/HT-MN010-4/same_15.jpg,images/products/HT-MN010-4/same_4.jpg,images/products/HT-MN010-4/same_45.jpg"},
+{id:"htmn0105",cat:"fan-heater",name:"Handle 800W 1000W 1200W Handy Fan Heater",model:"HT-MN010",desc:"Portable Fan Heater, 8H Timer, Adjustable Air Vent, Overheat Protection",img:"images/products/HT-MN010-5/main.jpg",images:"images/products/HT-MN010-5/img_2.png,images/products/HT-MN010-5/main.jpg,images/products/HT-MN010-5/same_10.jpg,images/products/HT-MN010-5/same_22.jpg,images/products/HT-MN010-5/same_4.jpg"},
+{id:"htmn03",cat:"fan-heater",name:"Mini Multifunctional PTC Portable Heater Fan",model:"HT-MN03",desc:"Humanization Design, Angle Up/Down, Overheat & Tip-over Protection",img:"images/products/HT-MN03/img_1.jpg",images:"images/products/HT-MN03/img_1.jpg,images/products/HT-MN03/img_2.png"},
+{id:"htmn05a1",cat:"fan-heater",name:"Camping Outdoor PTC Portable Mini Electric Fan Heater",model:"HT-MN05A",desc:"Fast Heating, Hook Design, Adjustable Angle, Overheat & Tip-over Protection",img:"images/products/HT-MN05A-1/img_1.jpg",images:"images/products/HT-MN05A-1/img_1.jpg,images/products/HT-MN05A-1/same_16.jpg,images/products/HT-MN05A-1/same_17.jpg,images/products/HT-MN05A-1/same_18.jpg,images/products/HT-MN05A-1/same_37.jpg"},
+{id:"htmn05a2",cat:"fan-heater",name:"Camping Outdoor PTC Portable Mini Electric Fan Heater",model:"HT-MN05A",desc:"Fast Heating, Hook Design, Adjustable Angle, Overheat & Tip-over Protection",img:"images/products/HT-MN05A-2/same_16.jpg",images:"images/products/HT-MN05A-2/same_16.jpg,images/products/HT-MN05A-2/same_17.jpg,images/products/HT-MN05A-2/same_18.jpg,images/products/HT-MN05A-2/same_37.jpg"},
+{id:"htmn05a3",cat:"fan-heater",name:"Camping Outdoor PTC Portable Mini Electric Fan Heater",model:"HT-MN05A",desc:"Fast Heating, Hook Design, Adjustable Angle, Overheat & Tip-over Protection",img:"images/products/HT-MN05A-3/main.jpg",images:"images/products/HT-MN05A-3/main.jpg,images/products/HT-MN05A-3/same_16.jpg,images/products/HT-MN05A-3/same_18.jpg,images/products/HT-MN05A-3/same_37.jpg"},
+{id:"htmn05a4",cat:"fan-heater",name:"Camping Outdoor PTC Portable Mini Electric Fan Heater",model:"HT-MN05A",desc:"Fast Heating, Hook Design, Adjustable Angle, Overheat & Tip-over Protection",img:"images/products/HT-MN05A-4/main.jpg",images:"images/products/HT-MN05A-4/main.jpg,images/products/HT-MN05A-4/same_16.jpg,images/products/HT-MN05A-4/same_17.jpg,images/products/HT-MN05A-4/same_37.jpg"},
+{id:"htmn05a5",cat:"fan-heater",name:"Camping Outdoor PTC Portable Mini Electric Fan Heater",model:"HT-MN05A",desc:"Fast Heating, Hook Design, Adjustable Angle, Overheat & Tip-over Protection",img:"images/products/HT-MN05A-5/main.jpg",images:"images/products/HT-MN05A-5/main.jpg,images/products/HT-MN05A-5/same_16.jpg,images/products/HT-MN05A-5/same_17.jpg,images/products/HT-MN05A-5/same_18.jpg"},
+{id:"htmn09",cat:"fan-heater",name:"Electric Heaters Fan Heater Warmer Desktop Winter Heating Fan",model:"HT-MN09",desc:"PTC Ceramic, Office 1000W, Bathroom & Bedroom Low Noise Desk Heater",img:"images/products/HT-MN09/img_1.jpg",images:"images/products/HT-MN09/img_1.jpg,images/products/HT-MN09/img_2.jpg"},
+{id:"f0011",cat:"fan",name:"Air Circulation Fan with LED Light",model:"F-001",desc:"Rechargeable, Foldable, 8 Wind Speeds, Mood Light, Wall-hanging/Desktop, 2000mAh Battery",img:"images/products/F-001-1/main.jpg",images:"images/products/F-001-1/main.jpg,images/products/F-001-1/same_29.jpg,images/products/F-001-1/same_41.jpg,images/products/F-001-1/same_6.jpg,images/products/F-001-1/same_8.jpg"},
+{id:"f0012",cat:"fan",name:"Air Circulation Fan with LED Light",model:"F-001",desc:"Rechargeable, Foldable, 8 Wind Speeds, Mood Light, Wall-hanging/Desktop, 2000mAh Battery",img:"images/products/F-001-2/main.jpg",images:"images/products/F-001-2/main.jpg,images/products/F-001-2/same_29.jpg,images/products/F-001-2/same_3.jpg,images/products/F-001-2/same_41.jpg,images/products/F-001-2/same_8.jpg"},
+{id:"f0013",cat:"fan",name:"Air Circulation Fan with LED Light",model:"F-001",desc:"Rechargeable, Foldable, 8 Wind Speeds, Mood Light, Wall-hanging/Desktop, 2000mAh Battery",img:"images/products/F-001-3/main.jpg",images:"images/products/F-001-3/main.jpg,images/products/F-001-3/same_3.jpg,images/products/F-001-3/same_41.jpg,images/products/F-001-3/same_6.jpg,images/products/F-001-3/same_8.jpg"},
+{id:"fthh011",cat:"fan",name:"Rechargeable Mini Handheld Portable Fan",model:"FT-HH01",desc:"Foldable, USB Charging, Hand/Table/Neck Use, 180 Degree/90 Degree Adjustable",img:"images/products/FT-HH01-1/img_1.jpg",images:"images/products/FT-HH01-1/img_1.jpg,images/products/FT-HH01-1/img_2.jpg,images/products/FT-HH01-1/img_3.jpg,images/products/FT-HH01-1/img_4.jpg,images/products/FT-HH01-1/img_5.jpg,images/products/FT-HH01-1/img_6.jpg,images/products/FT-HH01-1/img_7.jpg"},
+{id:"ftwf12011",cat:"fan",name:"12 inch Folding Fan Portable USB Desk Standing Fan",model:"FT-WF-12-01",desc:"Rechargeable, 36hrs Battery Life, 9+9 Double Fan Blades, Low Noise DC Brushless Motor",img:"images/products/FT-WF-12-01-1/img_1.jpg",images:"images/products/FT-WF-12-01-1/img_1.jpg,images/products/FT-WF-12-01-1/same_11.jpg,images/products/FT-WF-12-01-1/same_13.png,images/products/FT-WF-12-01-1/same_20.jpg,images/products/FT-WF-12-01-1/same_24.jpg,images/products/FT-WF-12-01-1/same_25.jpg,images/products/FT-WF-12-01-1/same_38.jpg,images/products/FT-WF-12-01-1/same_44.jpg,images/products/FT-WF-12-01-1/same_7.jpg"},
+{id:"ftwf12012",cat:"fan",name:"12 inch Folding Fan Portable USB Desk Standing Fan",model:"FT-WF-12-01",desc:"Rechargeable, 36hrs Battery Life, 9+9 Double Fan Blades, Low Noise DC Brushless Motor",img:"images/products/FT-WF-12-01-2/img_1.jpg",images:"images/products/FT-WF-12-01-2/img_1.jpg,images/products/FT-WF-12-01-2/img_2.jpg,images/products/FT-WF-12-01-2/img_3.jpg,images/products/FT-WF-12-01-2/img_4.jpg,images/products/FT-WF-12-01-2/same_13.png,images/products/FT-WF-12-01-2/same_24.jpg,images/products/FT-WF-12-01-2/same_38.jpg,images/products/FT-WF-12-01-2/same_44.jpg,images/products/FT-WF-12-01-2/same_7.jpg"},
+{id:"ftwf12013",cat:"fan",name:"12 inch Folding Fan Portable USB Desk Standing Fan",model:"FT-WF-12-01",desc:"Rechargeable, 36hrs Battery Life, 9+9 Double Fan Blades, Low Noise DC Brushless Motor",img:"images/products/FT-WF-12-01-3/img_1.jpg",images:"images/products/FT-WF-12-01-3/img_1.jpg,images/products/FT-WF-12-01-3/same_11.jpg,images/products/FT-WF-12-01-3/same_13.png,images/products/FT-WF-12-01-3/same_20.jpg,images/products/FT-WF-12-01-3/same_24.jpg,images/products/FT-WF-12-01-3/same_25.jpg,images/products/FT-WF-12-01-3/same_38.jpg,images/products/FT-WF-12-01-3/same_44.jpg,images/products/FT-WF-12-01-3/same_7.jpg"},
+{id:"ftwf08011",cat:"fan",name:"2025 Summer Season 8 inch Folding Clip Fan",model:"FT-WF08-01",desc:"Clip Design, 4-11hrs Battery Life, 3 Wind Speed, 8H Timer, LED Light, 180 Degree Adjustable",img:"images/products/FT-WF08-01-1/img_1.jpg",images:"images/products/FT-WF08-01-1/img_1.jpg,images/products/FT-WF08-01-1/img_2.jpg,images/products/FT-WF08-01-1/img_3.jpg"},
+{id:"ftwf08012",cat:"fan",name:"2025 Summer Season 8 inch Folding Clip Fan",model:"FT-WF08-01",desc:"Clip Design, 4-11hrs Battery Life, 3 Wind Speed, 8H Timer, LED Light, 180 Degree Adjustable",img:"images/products/FT-WF08-01-2/img_1.jpg",images:"images/products/FT-WF08-01-2/img_1.jpg,images/products/FT-WF08-01-2/img_2.jpg,images/products/FT-WF08-01-2/img_3.jpg,images/products/FT-WF08-01-2/same_2.png,images/products/FT-WF08-01-2/same_42.png,images/products/FT-WF08-01-2/same_47.png,images/products/FT-WF08-01-2/same_5.jpg"},
+{id:"ftwf08013",cat:"fan",name:"2025 Summer Season 8 inch Folding Clip Fan",model:"FT-WF08-01",desc:"Clip Design, 4-11hrs Battery Life, 3 Wind Speed, 8H Timer, LED Light, 180 Degree Adjustable",img:"images/products/FT-WF08-01-3/img_1.jpg",images:"images/products/FT-WF08-01-3/img_1.jpg,images/products/FT-WF08-01-3/same_2.png,images/products/FT-WF08-01-3/same_42.png,images/products/FT-WF08-01-3/same_43.png,images/products/FT-WF08-01-3/same_47.png"},
+{id:"ftwf08014",cat:"fan",name:"2025 Summer Season 8 inch Folding Clip Fan",model:"FT-WF08-01",desc:"Clip Design, 4-11hrs Battery Life, 3 Wind Speed, 8H Timer, LED Light, 180 Degree Adjustable",img:"images/products/FT-WF08-01-4/img_1.jpg",images:"images/products/FT-WF08-01-4/img_1.jpg,images/products/FT-WF08-01-4/same_2.png,images/products/FT-WF08-01-4/same_42.png,images/products/FT-WF08-01-4/same_43.png,images/products/FT-WF08-01-4/same_47.png"},
+{id:"ftwf08015",cat:"fan",name:"2025 Summer Season 8 inch Folding Clip Fan",model:"FT-WF08-01",desc:"Clip Design, 4-11hrs Battery Life, 3 Wind Speed, 8H Timer, LED Light, 180 Degree Adjustable",img:"images/products/FT-WF08-01-5/img_1.jpg",images:"images/products/FT-WF08-01-5/img_1.jpg,images/products/FT-WF08-01-5/img_2.jpg,images/products/FT-WF08-01-5/img_5.jpg,images/products/FT-WF08-01-5/same_2.png,images/products/FT-WF08-01-5/same_42.png,images/products/FT-WF08-01-5/same_47.png,images/products/FT-WF08-01-5/same_5.jpg"},
+{id:"tlc001",cat:"fan",name:"USB Powered Table Air Cooler Mini Portable 700mL",model:"TLC-001",desc:"Air Cooler, Humidifier, Purifier 3-in-1, 700mL Tank, 6 Colour LED, Freon Free",img:"images/products/TLC-001/img_1.jpg",images:"images/products/TLC-001/img_1.jpg,images/products/TLC-001/img_2.jpg,images/products/TLC-001/img_3.jpg,images/products/TLC-001/img_4.jpg,images/products/TLC-001/img_5.jpg,images/products/TLC-001/img_6.jpg"},
+{id:"680",cat:"electric-kettle",name:"2 In 1 Portable Foldable Multi-Functional Electric Kettle",model:"680",desc:"Foldable Design, 800ml Capacity, 304 Food Grade, Boiling Water/Hot Pot/Instant Noodles",img:"images/products/680/main.jpg",images:"images/products/680/img_2.jpg,images/products/680/img_3.jpg,images/products/680/main.jpg"},
+{id:"d682",cat:"electric-kettle",name:"2 In 1 Glass Electric Tea Maker Kettle Health Pot",model:"D682",desc:"Glass Body, 304 Stainless Steel, Multi-Function, Reservation/Timing, Dry Burning Protection",img:"images/products/D682/main.jpg",images:"images/products/D682/img_2.jpg,images/products/D682/img_3.jpg,images/products/D682/main.jpg"},
+{id:"d683",cat:"electric-kettle",name:"2 In 1 Glass Electric Tea Maker Kettle Health Pot V2",model:"D683",desc:"Glass Body, 304 Stainless Steel, Multi-Function, Reservation/Timing, Dry Burning Protection",img:"images/products/D683/main.jpg",images:"images/products/D683/img_2.jpg,images/products/D683/main.jpg"},
+{id:"d684",cat:"electric-kettle",name:"2 In 1 Glass Electric Tea Maker Kettle Health Pot V3",model:"D684",desc:"Glass Body, 304 Stainless Steel, Multi-Function, Reservation/Timing, Dry Burning Protection",img:"images/products/D684/main.jpg",images:"images/products/D684/img_2.jpg,images/products/D684/img_3.jpg,images/products/D684/img_4.jpg,images/products/D684/main.jpg"},
+{id:"d685",cat:"electric-kettle",name:"2 In 1 Glass Electric Tea Maker Kettle Health Pot V4",model:"D685",desc:"Color customized, 304 stainless steel body, Double overheat protection, Multi-purpose",img:"images/products/D685/main.jpg",images:"images/products/D685/img_2.jpg,images/products/D685/main.jpg"},
+{id:"ft16a",cat:"electric-kettle",name:"Electric Kettle Temperature Control Heating Stainless Steel Teapot",model:"FT-16A",desc:"1350W, 0.8L, 304 stainless steel base, Color screen temperature display, Tea extraction",img:"images/products/FT-16A/main.jpg",images:"images/products/FT-16A/img_2.jpg,images/products/FT-16A/main.jpg"},
+{id:"fta02",cat:"electric-kettle",name:"Electric Kettle Temperature Control Heating Stainless Steel Teapot V2",model:"FT-A02",desc:"1350W, 0.8L, 304 stainless steel base, Color screen temperature display, Tea extraction",img:"images/products/FT-A02/main.jpg",images:"images/products/FT-A02/img_2.png,images/products/FT-A02/main.jpg"},
+{id:"fta19",cat:"electric-kettle",name:"Portable Travel Electric Kettle V3",model:"FT-A19",desc:"600W, 0.5L, Personal cup included, Thick film heating, Knob control, Wide voltage",img:"images/products/FT-A19/main.jpg",images:"images/products/FT-A19/img_2.jpg,images/products/FT-A19/img_3.jpg,images/products/FT-A19/img_4.jpg,images/products/FT-A19/img_5.jpg,images/products/FT-A19/main.jpg"},
+{id:"ftc11",cat:"electric-kettle",name:"Portable Travel Electric Kettle",model:"FT-C11",desc:"600W-800W, 0.5L, Personal cup included, Thick film heating, Knob control, Wide voltage design",img:"images/products/FT-C11/main.jpg",images:"images/products/FT-C11/img_2.jpg,images/products/FT-C11/img_3.png,images/products/FT-C11/main.jpg"},
+{id:"sc900",cat:"electric-kettle",name:"900ml Self-heating Cup Multi-Function Intelligent Electric Stew Cup",model:"SC-900",desc:"800W, 0.9L, Touch Panel, Digital Display, 3-Speed Adjustment, Auto Keep Warm",img:"images/products/SC-900/img_1.jpg",images:"images/products/SC-900/img_1.jpg,images/products/SC-900/img_2.jpg"},
+{id:"sc900c",cat:"electric-kettle",name:"Custom Multi-Function Mini Intelligent Electric Stew Cup",model:"SC-900C",desc:"800W, 0.9L, Touch Panel, Digital Display, Precise Temperature Control",img:"images/products/SC-900C/img_1.jpg",images:"images/products/SC-900C/img_1.jpg,images/products/SC-900C/img_2.jpg"},
+{id:"ftg051",cat:"mini-cooker",name:"Multifunction Mini Cooker",model:"FT-G05",desc:"600W-650W, 1.2L, Double Ring Heating, 304 Stainless Steel, Multi-Purpose Cooking",img:"images/products/FT-G05-1/main.png",images:"images/products/FT-G05-1/main.png,images/products/FT-G05-1/same_14.jpg,images/products/FT-G05-1/same_26.jpg,images/products/FT-G05-1/same_34.jpg,images/products/FT-G05-1/same_35.png"},
+{id:"ftg052",cat:"mini-cooker",name:"Multifunction Mini Cooker",model:"FT-G05",desc:"600W-650W, 1.2L, Double Ring Heating, 304 Stainless Steel, Multi-Purpose Cooking",img:"images/products/FT-G05-2/main.jpg",images:"images/products/FT-G05-2/1.jpg,images/products/FT-G05-2/main.jpg,images/products/FT-G05-2/same_12.png,images/products/FT-G05-2/same_26.jpg,images/products/FT-G05-2/same_34.jpg,images/products/FT-G05-2/same_35.png"},
+{id:"ftg053",cat:"mini-cooker",name:"Multifunction Mini Cooker",model:"FT-G05",desc:"600W-650W, 1.2L, Double Ring Heating, 304 Stainless Steel, Multi-Purpose Cooking",img:"images/products/FT-G05-3/main.jpg",images:"images/products/FT-G05-3/img_2.jpg,images/products/FT-G05-3/main.jpg,images/products/FT-G05-3/same_34.jpg"},
+{id:"fc250",cat:"food-chopper",name:"Baffle Design 250mL Electric Food Chopper",model:"FC-250",desc:"30W, 1200mAh, 1700rpm, Petal Shape Top, Sticker Button",img:"images/products/FC-250/main.jpg",images:"images/products/FC-250/img_2.jpg,images/products/FC-250/img_3.jpg,images/products/FC-250/img_4.jpg,images/products/FC-250/main.jpg"},
+{id:"fc350",cat:"food-chopper",name:"350mL PS Cup Kitchen Garlic Vegetable Cutter",model:"FC-350",desc:"Wireless Mini Electric Food Chopper, USB Charging, Meat Processor",img:"images/products/FC-350/main.jpg",images:"images/products/FC-350/img_1.jpg,images/products/FC-350/img_3.jpg,images/products/FC-350/img_4.jpg,images/products/FC-350/img_5.png,images/products/FC-350/img_8.png,images/products/FC-350/main.jpg,images/products/FC-350/same_27.png,images/products/FC-350/same_33.png"},
+{id:"fc350b",cat:"food-chopper",name:"Baffle Design 350mL Electric Food Chopper",model:"FC-350B",desc:"30W, 1200mAh, 1700rpm, Riffle Pattern Top, Sticker Button",img:"images/products/FC-350B/main.jpg",images:"images/products/FC-350B/img_2.jpg,images/products/FC-350B/img_3.jpg,images/products/FC-350B/img_4.jpg,images/products/FC-350B/main.jpg,images/products/FC-350B/same_27.png,images/products/FC-350B/same_33.png"},
+{id:"fcusb",cat:"food-chopper",name:"Kitchen Vegetable Chopper Portable Electric",model:"FC-USB",desc:"USB Charging, Baby Food Processor, Mini Garlic Food Chopper",img:"images/products/FC-USB/main.jpg",images:"images/products/FC-USB/main.jpg,images/products/FC-USB/same_27.png,images/products/FC-USB/same_33.png"},
+{id:"fcusb2",cat:"food-chopper",name:"Kitchen Vegetable Chopper Portable Electric",model:"FC-USB2",desc:"USB Charging, Baby Food Processor, Mini Garlic Food Chopper",img:"images/products/FC-USB2/main.jpg",images:"images/products/FC-USB2/main.jpg,images/products/FC-USB2/same_27.png,images/products/FC-USB2/same_33.png"},
+{id:"cp001",cat:"food-cooler-pan",name:"Fresh Food Rectangular Serving Tray Cooling Plate",model:"CP-001",desc:"Rectangular Design, Keep Food Fresh, Serving Tray, Cooling Plate",img:"images/products/CP-001/main.jpg",images:"images/products/CP-001/main.jpg,images/products/CP-001/same_23.jpg,images/products/CP-001/same_28.jpg,images/products/CP-001/same_30.jpg,images/products/CP-001/same_32.jpg"},
+{id:"cp002",cat:"food-cooler-pan",name:"Summer Fresh Instant Food Cooler Pan",model:"CP-002",desc:"Instant Cooling, Summer Use, Food Cooler",img:"images/products/CP-002/main.jpg",images:"images/products/CP-002/main.jpg,images/products/CP-002/same_23.jpg,images/products/CP-002/same_30.jpg,images/products/CP-002/same_32.jpg"},
+{id:"cp003",cat:"food-cooler-pan",name:"Summer Keep Cooling Food Pan",model:"CP-003",desc:"Keep Food Cool, Summer Use, Cooling Pan",img:"images/products/CP-003/main.jpg",images:"images/products/CP-003/main.jpg,images/products/CP-003/same_21.jpg,images/products/CP-003/same_23.jpg,images/products/CP-003/same_28.jpg,images/products/CP-003/same_30.jpg"},
+{id:"cp004",cat:"food-cooler-pan",name:"Summer Keep Cooling Food Pan",model:"CP-004",desc:"Keep Food Cool, Summer Use, Cooling Pan",img:"images/products/CP-004/main.jpg",images:"images/products/CP-004/main.jpg,images/products/CP-004/same_21.jpg,images/products/CP-004/same_28.jpg,images/products/CP-004/same_30.jpg,images/products/CP-004/same_32.jpg"},
+{id:"ic2200",cat:"induction-cooker",name:"2200W Multi Functional Electric Cooker Stove",model:"IC-2200",desc:"Infrared Induction Cooker, New Design, Multi Functional",img:"images/products/IC-2200/img_1.jpg",images:"images/products/IC-2200/img_1.jpg"},
+{id:"ic2200s",cat:"induction-cooker",name:"2200W Induction Cooker Top Smart Digital",model:"IC-2200S",desc:"Electro Magnetic, Smart Digital, Electric Hotpot, Ceramic Infrared",img:"images/products/IC-2200S/img_1.jpg",images:"images/products/IC-2200S/img_1.jpg"},
+{id:"ic2200t",cat:"induction-cooker",name:"Ultra-Thin Induction Cooktop Portable",model:"IC-2200T",desc:"2200W Electric Cooktops, Ultra-Thin Design, Portable",img:"images/products/IC-2200T/img_1.jpg",images:"images/products/IC-2200T/img_1.jpg"},
+{id:"rc1800",cat:"rice-cooker",name:"Smart Low Sugar Rice Cooker",model:"RC-1800",desc:"1.8L, Multi Household, Desugar Purpose, Non-Stick Electric Rice Cooker",img:"images/products/RC-1800/img_1.jpg",images:"images/products/RC-1800/img_1.jpg,images/products/RC-1800/img_2.jpg,images/products/RC-1800/img_3.jpg,images/products/RC-1800/img_4.jpg,images/products/RC-1800/img_5.jpg,images/products/RC-1800/img_6.jpg"},
+{id:"fim001",cat:"fried-ice-machine",name:"Homemade Fruit Ice Stir Frying Machine",model:"FIM-001",desc:"Ice Frying Machine, Stir Fried Yogurt Tray, Household Children Ice Frying",img:"images/products/FIM-001/img_1.jpg",images:"images/products/FIM-001/img_1.jpg"},
+{id:"fim002",cat:"fried-ice-machine",name:"Instant Ice Cream Maker Rolled",model:"FIM-002",desc:"Instant Gelato Pan Roll, DIY Ice Cream, Mint Green",img:"images/products/FIM-002/img_1.jpg",images:"images/products/FIM-002/img_1.jpg"},
+{id:"fim003",cat:"fried-ice-machine",name:"Instant Ice Cream Maker Rolled",model:"FIM-003",desc:"Instant Gelato Pan Roll, DIY Ice Cream, Baby Pink",img:"images/products/FIM-003/img_1.jpg",images:"images/products/FIM-003/img_1.jpg"},
+{id:"fim004",cat:"fried-ice-machine",name:"Rolled Ice Cream Maker for Kids",model:"FIM-004",desc:"Unplugged Stainless Steel, Fried Yogurt Machine, Fruit Ice Cream Plate",img:"images/products/FIM-004/img_1.jpg",images:"images/products/FIM-004/img_1.jpg"}];
+
+/* === CATEGORY NAMES === */
+var CATEGORY_NAMES={"heater":"Heater","fan-heater":"Fan Heater","fan":"Fan","electric-kettle":"Electric Kettle","mini-cooker":"Mini Cooker","food-chopper":"Food Chopper","food-cooler-pan":"Food Cooler Pan","induction-cooker":"Induction Cooker","rice-cooker":"Rice Cooker","fried-ice-machine":"Fried Ice Machine"};
+var currentDetailProduct=null;
+var DETAIL_REFERENCE_BY_MODEL={
+"HT-H001":{
+intro:"A wall mounted bathroom heater developed for fast room warming, practical airflow control and safer daily use in compact home spaces.",
+overview:["Designed for bathroom and utility-area comfort heating with a space-saving wall-mounted structure.","Large LED display and multiple power levels support clear operation and flexible temperature management.","Suitable for OEM/ODM programs that need export-ready heater products with branding and packaging customization."],
+features:["Big LED large screen display with accurate temperature control","Double overheat protection for safer use","UV sterilization function can be switched on when needed","5-hour timer for convenient daily operation","Air outlet adjustable up and down by 50°","Built-in turbofan delivers strong yet quiet airflow","Multi-gear operation with dehumidification support","IPX2-friendly bathroom design with reversible towel handle"],
+specs:["AC 100-120V, 50-60Hz Fan/500/800/1200W","AC 220-240V, 50-60Hz Fan/800/1200/1800W","Product size: 328 × 280 × 124 mm","Gift box size: 348 × 138 × 295 mm","Master carton: 6 pcs / CTN, 608 × 432 × 348 mm","Loading quantity: 20GP 1780 pcs; 40HQ 4308 pcs"]
+},
+"HT-MN06":{
+intro:"A compact mini PCB fan heater created for rapid personal-space heating with balanced airflow, safety protection and easy desktop placement.",
+overview:["Suitable for desk, bedroom and portable seasonal use where compact size and fast warm-up are important.","Clean modern styling and adjustable air outlet design help the product fit contemporary OEM/ODM small-appliance ranges.","Built for efficient personal heating with strong attention to safety, noise control and stable operation."],
+features:["Rapid heating","High/Low thermostat setting for energy and electricity savings","Overheat safety protection","Tip-over protection for added safety","5-hour timer","Adjustable air outlet angle up and down by 18°","Whole body material FRPP/PC+PBT","Non-slip feet on bottom for stable placement","Air filter included","Multiple safety design with low noise and long service life"],
+specs:["Product Model: HT-MN06","AC 100-120V, 50-60Hz 600W","AC 220-240V, 50-60Hz 800W","Product size: 213 × 179 × 113 mm","Gift box size: 223 × 185 × 118 mm","Master carton: 16 pcs / CTN, 475 × 394 × 450 mm","Loading quantity: 20GP 5400 pcs; 40HQ 13632 pcs"]
+},
+"FT-WF-12-01":{
+intro:"A foldable rechargeable fan designed for indoor and outdoor cooling with wide-angle airflow, convenient storage and long-lasting battery operation.",
+overview:["12-inch folding fan that works on both tabletop and floor-standing setups for flexible home and travel use.","9+9 double blades and wide-angle cool air supply create a comfortable natural wind experience.","A strong fit for OEM/ODM fan projects requiring portable cooling, modern styling and accessory customization."],
+features:["Wide-angle cool air supply","9+9 double fan blades for comfortable natural wind","Frequency conversion technology","Low noise DC brushless motor","Battery status reminder","Soft ambient lighting","Hidden handle for easy carrying","Removable fan guard for easy cleaning","Wireless controller with 5-meter remote control","Built-in storage slot for controller","Stable ergonomic base for smooth operation","Tabletop and floor-standing use","Flexible folding structure for space-saving storage","Wireless and rechargeable for indoor and outdoor use","Double on/off switches for hand and foot control","Negative ion function for air purification","Detachable humidifier box for quick cooling","Dust-proof carrying bag for outdoor use","External power bank charging support"],
+specs:["Product Model: FT-WF-12-01","Product size: Folded 300 × 297 × 138 mm; Standing 900 × 297 × 300 mm","Gift box size: 334.5 × 334.5 × 178 mm","Master carton: 6 pcs / CTN, 684 × 534 × 345 mm","Loading quantity: 20GP 1590 pcs; 40HQ 3720 pcs","100-240V / 14W","8-hour timer","Up to 36 hours battery life on a full charge"]
+}
+};
+var DETAIL_REFERENCE_BY_CATEGORY={
+"heater":{
+intro:"{name} is developed for efficient room heating with practical control functions, safety-focused construction and OEM/ODM-friendly customization options.",
+overview:["Ideal for bathroom, bedroom or utility-area warming depending on installation and model configuration.","Built for export-oriented home appliance programs that value dependable heating performance and clean appearance.","A good choice for projects requiring multiple power settings, airflow adjustment and daily convenience features."],
+features:["Fast heating performance for compact indoor spaces","User-friendly control experience for everyday use","Safety-oriented design with overheat protection","Flexible timer or multi-level settings depending on model"],
+oem:"FOCUSEE supports OEM/ODM heater cooperation with color, logo, packaging, plug standard and market-specific configuration customization."
+},
+"fan-heater":{
+intro:"{name} combines compact portability, quick heating response and protective design details for personal warming scenarios.",
+overview:["Suitable for desk, bedside, study and seasonal portable-use applications.","Compact body helps brands create small-appliance collections with practical winter products.","Designed around rapid heat delivery, ease of placement and dependable daily operation."],
+features:["Rapid warm air output for personal comfort","Portable structure for desktop or small-space use","Safety-focused operation with overheat and anti-tip protection","Low-noise performance with stable bottom support"],
+oem:"FOCUSEE provides OEM/ODM fan-heater services including logo, housing color, package artwork and accessory configuration matching."
+},
+"fan":{
+intro:"{name} is designed to deliver convenient portable cooling with practical storage, user comfort and modern styling for home and outdoor scenarios.",
+overview:["Developed for daily cooling use in bedroom, office, living area, camping or travel environments.","Portable and foldable configurations make the product line well suited to retail, promotional and seasonal OEM/ODM programs.","Focuses on comfortable airflow, low-noise operation and flexible placement."],
+features:["Comfortable airflow with portable convenience","Foldable or space-saving structure depending on model","Rechargeable or USB-powered operation for flexible use","Designed for easy carrying, storage and daily cleaning"],
+oem:"FOCUSEE can customize fan projects with logo, color, accessories, gift box design and market-specific charging or plug solutions."
+},
+"electric-kettle":{
+intro:"{name} is built for fast boiling and practical multi-purpose heating, combining compact form with travel-friendly or countertop-friendly convenience.",
+overview:["Suitable for water boiling, tea preparation, instant meals or personal hot-drink use depending on product configuration.","Portable and lifestyle-oriented designs help distributors and brands target travel, office and compact-living demand.","Designed for reliable daily heating performance with attention to material quality and easy cleaning."],
+features:["Fast heating for personal or family beverage preparation","Compact and portable form factor for modern lifestyles","Food-contact material focus for safer daily use","Multi-function structure depending on model configuration"],
+oem:"FOCUSEE supports OEM/ODM electric-kettle projects with color, logo, packaging, voltage version and accessory customization."
+},
+"mini-cooker":{
+intro:"{name} is created for light everyday cooking with compact size, convenient handling and flexible application in modern kitchens, dorms and travel settings.",
+overview:["Suitable for noodles, soup, porridge, hot pot and simple meal preparation depending on model capacity.","Compact size makes the range attractive for apartment, dormitory and travel-focused appliance assortments.","Built to balance convenient operation, easy cleaning and multi-purpose cooking value."],
+features:["Multi-purpose cooking for daily small-batch meals","Compact body for easy storage and countertop placement","User-friendly heating structure for quick preparation","Designed for convenient cleaning and portable use"],
+oem:"FOCUSEE offers OEM/ODM mini-cooker support covering logo, color, pot finish, packaging and market-specific electrical configuration."
+},
+"food-chopper":{
+intro:"{name} is developed for quick ingredient preparation, helping users handle garlic, vegetables, baby food and light meal prep with less manual effort.",
+overview:["Suitable for chopping garlic, vegetables, herbs, meat portions and baby food depending on bowl capacity and blade setup.","Compact size and rechargeable options make the range suitable for everyday kitchen convenience products.","Designed for easy operation, simplified prep work and straightforward cleaning."],
+features:["Compact electric chopping for efficient food prep","Convenient one-touch or simple-control operation","Portable design suited to small kitchens and daily use","Easy disassembly and cleaning depending on model"],
+oem:"FOCUSEE supports OEM/ODM food-chopper projects with cup capacity, color, logo and packaging customization."
+},
+"food-cooler-pan":{
+intro:"{name} is designed for serving occasions that need food to stay cool and fresh for longer, especially in warm-weather dining scenarios.",
+overview:["Useful for fruit, dessert, buffet and party presentations where temperature retention improves serving quality.","A differentiated seasonal product line for brands serving kitchenware and entertaining categories.","Built to combine practical cooling support with simple tabletop presentation."],
+features:["Helps keep food cool and fresh during serving","Suitable for summer dining, desserts and buffet use","Simple shape that is easy to match with different table settings","Practical product for home gatherings and hospitality supply"],
+oem:"FOCUSEE can provide OEM/ODM food-cooler-pan solutions with customized size, color, private-label packaging and bundled accessory options."
+},
+"induction-cooker":{
+intro:"{name} is developed for efficient countertop cooking with responsive heat control, modern design and practical household use.",
+overview:["Suitable for hot pot, daily cooking and auxiliary kitchen heating in home or light commercial scenarios.","Slim portable formats help brands address compact kitchen and modern lifestyle demand.","Designed around efficient heat transfer, easy cleaning and straightforward operation."],
+features:["Efficient countertop heating for daily cooking","Portable design for flexible placement","Smooth surface for easy cleaning","Suitable for modern home-appliance OEM/ODM lines"],
+oem:"FOCUSEE supports OEM/ODM induction-cooker programs with private branding, control-panel artwork, packaging and plug adaptation."
+},
+"rice-cooker":{
+intro:"{name} is developed for convenient everyday rice cooking with practical household capacity, user-friendly controls and easy-clean inner pot solutions.",
+overview:["Designed for family meals, rice preparation and multi-function kitchen support depending on cooking program setup.","A strong fit for brands seeking reliable entry-level or wellness-oriented rice-cooker products.","Built to combine steady cooking performance with simple maintenance and daily convenience."],
+features:["Convenient household rice cooking performance","Practical non-stick or easy-clean cooking structure","Suitable for modern family meal preparation","Designed for reliable daily use and streamlined operation"],
+oem:"FOCUSEE provides OEM/ODM rice-cooker support including housing color, logo, packaging and control-panel customization."
+},
+"fried-ice-machine":{
+intro:"{name} is created for fun DIY dessert making, bringing an interactive frozen-treat experience to families, gifting channels and seasonal retail programs.",
+overview:["Suitable for rolled ice cream, frozen yogurt and fruit-based dessert creation at home.","A playful category for gift, children, summer-promotion and novelty kitchen-product programs.","Designed for easy setup, enjoyable user interaction and attractive presentation."],
+features:["DIY dessert experience for family and seasonal use","Suitable for fruit, yogurt and creative frozen treats","Simple and approachable operation for home users","A differentiated product for retail bundles and gifting channels"],
+oem:"FOCUSEE supports OEM/ODM fried-ice-machine projects with color, packaging, accessory bundle and private-label customization."
+}
+};
+function uniqueList(items){
+var out=[],seen={};
+for(var i=0;i<items.length;i++){
+var raw=items[i];
+if(raw===undefined||raw===null) continue;
+var item=String(raw).replace(/\s+/g,' ').trim();
+if(!item) continue;
+var key=item.toLowerCase();
+if(seen[key]) continue;
+seen[key]=true;
+out.push(item);
+}
+return out;
+}
+function withProductText(template,p){
+return String(template||'')
+.replace(/\{name\}/g,p.name)
+.replace(/\{model\}/g,p.model)
+.replace(/\{category\}/g,(CATEGORY_NAMES[p.cat]||p.cat||'Product'));
+}
+function getDescParts(p){
+return uniqueList((p.desc||'').split(',').map(function(item){return item.trim();}));
+}
+function getReferenceContent(p){
+return DETAIL_REFERENCE_BY_MODEL[p.model]||DETAIL_REFERENCE_BY_CATEGORY[p.cat]||{};
+}
+function buildDetailDescriptionHtml(p){
+var ref=getReferenceContent(p);
+var descParts=getDescParts(p);
+var intro=withProductText(ref.intro||'{name} is developed for export-focused home appliance programs with reliable performance and practical customization potential.',p);
+var overview=uniqueList((ref.overview||[]).map(function(item){return withProductText(item,p);}).concat(descParts.slice(0,4)));
+var features=uniqueList((ref.features||[]).map(function(item){return withProductText(item,p);}).concat(descParts)).slice(0,12);
+var oem=withProductText(ref.oem||'FOCUSEE supports OEM/ODM cooperation for {category} projects, including logo, packaging, color and market-specific configuration customization.',p);
+var html='<p>'+esc(intro)+'</p>';
+html+='<h4 class="detail-section-title">Product Overview</h4><ul>';
+for(var i=0;i<overview.length;i++) html+='<li>'+esc(overview[i])+'</li>';
+html+='</ul>';
+html+='<h4 class="detail-section-title">Operating Features</h4><ul>';
+for(var j=0;j<features.length;j++) html+='<li>'+esc(features[j])+'</li>';
+html+='</ul>';
+html+='<h4 class="detail-section-title">OEM / ODM Service</h4><p>'+esc(oem)+'</p>';
+return html;
+}
+function buildDetailSpecsHtml(p){
+var ref=getReferenceContent(p);
+var specs=uniqueList(['Model: '+p.model,'Category: '+(CATEGORY_NAMES[p.cat]||p.cat)].concat((ref.specs||[]).map(function(item){return withProductText(item,p);})).concat(getDescParts(p)));
+var html='<ul>';
+for(var i=0;i<specs.length;i++) html+='<li>'+esc(specs[i])+'</li>';
+html+='</ul><p class="detail-note">For quotation, MOQ, lead time, packaging and customization details, please use the Add to Inquire button and mention model '+esc(p.model)+'.</p>';
+return html;
+}
+function addToInquire(){
+if(!currentDetailProduct) return;
+showPage('contact');
+var subject=document.getElementById('contactSubject');
+var message=document.getElementById('contactMessage');
+var nameInput=document.getElementById('contactName');
+if(subject) subject.value='Inquiry for '+currentDetailProduct.name+' ('+currentDetailProduct.model+')';
+if(message) message.value='Hello FOCUSEE team,\n\nI would like to inquire about the following product:\nProduct: '+currentDetailProduct.name+'\nModel: '+currentDetailProduct.model+'\nCategory: '+(CATEGORY_NAMES[currentDetailProduct.cat]||currentDetailProduct.cat)+'\n\nPlease share more details about MOQ, quotation, lead time, packaging and customization options.\n\nThank you.';
+setTimeout(function(){
+var target=subject||nameInput;
+if(target){
+ target.scrollIntoView({behavior:'smooth',block:'center'});
+ if(nameInput&& !nameInput.value) nameInput.focus();
+}
+},120);
+}
+
+/* === UTILITY === */
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+function clearCarousels(){clearInterval(thumbTimer);clearInterval(relatedTimer);thumbTimer=null;relatedTimer=null;}
+var thumbTimer=null,thumbIdx=0,relatedTimer=null,relatedIdx=0;
+
+/* === SPA NAV === */
+function showPage(pageId){
+clearCarousels();
+var pages=document.querySelectorAll('.page-section');
+for(var i=0;i<pages.length;i++) pages[i].classList.remove('active');
+var el=document.getElementById('page-'+pageId);
+if(el) el.classList.add('active');
+window.scrollTo({top:0,behavior:'smooth'});
+if(pageId==='home') renderHomeProducts();
+if(pageId==='products') renderProducts('all');
+}
+function showProducts(cat){
+clearCarousels();
+var pages=document.querySelectorAll('.page-section');
+for(var i=0;i<pages.length;i++) pages[i].classList.remove('active');
+document.getElementById('page-products').classList.add('active');
+window.scrollTo({top:0,behavior:'smooth'});
+renderProducts(cat);
+}
+
+/* === HOME PRODUCTS === */
+function buildCard(p){
+return '<div class="p-card" onclick="showDetail(\''+p.id+'\')">'
++'<div class="p-card-img"><img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy"></div>'
++'<div class="p-card-body">'
++'<p class="p-card-cat">'+(CATEGORY_NAMES[p.cat]||p.cat)+'</p>'
++'<h3>'+esc(p.name)+'</h3>'
++'<p>'+esc(p.desc)+'</p>'
++'<a class="read-more-btn" href="#">Read More</a>'
++'</div></div>';
+}
+function renderHomeProducts(cat){
+cat=cat||'all';
+var grid=document.getElementById('homeProductGrid');
+var items=cat==='all'?ALL_PRODUCTS:ALL_PRODUCTS.filter(function(p){return p.cat===cat;});
+var show=cat==='all'?items.slice(0,12):items;
+var html='';
+for(var i=0;i<show.length;i++) html+=buildCard(show[i]);
+grid.innerHTML=html;
+}
+function filterHome(cat){
+var btns=document.querySelectorAll('.hot-sale .filter-btn');
+for(var i=0;i<btns.length;i++) btns[i].classList.remove('active');
+event.target.classList.add('active');
+renderHomeProducts(cat);
+}
+
+/* === PRODUCTS PAGE === */
+function renderProducts(cat){
+cat=cat||'all';
+var grid=document.getElementById('productsGrid');
+var items=cat==='all'?ALL_PRODUCTS:ALL_PRODUCTS.filter(function(p){return p.cat===cat;});
+var html='';
+for(var i=0;i<items.length;i++) html+=buildCard(items[i]);
+grid.innerHTML=html;
+document.getElementById('productsCount').textContent=items.length;
+/* update sidebar active */
+var sideLinks=document.querySelectorAll('.sidebar a');
+for(var i=0;i<sideLinks.length;i++){
+sideLinks[i].classList.remove('active');
+var href=sideLinks[i].getAttribute('onclick')||'';
+if(cat==='all'&&href.indexOf("'all'")>-1) sideLinks[i].classList.add('active');
+else if(href.indexOf("'"+cat+"'")>-1&&cat!=='all') sideLinks[i].classList.add('active');
+}
+/* update filter buttons */
+var btns=document.querySelectorAll('.products-main .filter-btn');
+for(var i=0;i<btns.length;i++){
+btns[i].classList.remove('active');
+var oc=btns[i].getAttribute('onclick')||'';
+if(cat==='all'&&oc.indexOf("'all'")>-1) btns[i].classList.add('active');
+else if(oc.indexOf("'"+cat+"'")>-1&&cat!=='all') btns[i].classList.add('active');
+}
+}
+function filterProducts(cat){
+var btns=document.querySelectorAll('.products-main .filter-btn');
+for(var i=0;i<btns.length;i++) btns[i].classList.remove('active');
+if(event&&event.target) event.target.classList.add('active');
+renderProducts(cat);
+}
+
+/* === PRODUCT DETAIL === */
+function normalizeName(name){
+return (name||'').replace(/\s+V\d+$/i,'').replace(/\s+Version\s*\d+$/i,'').trim().toLowerCase();
+}
+function getDetailGallery(product){
+var gallery=[];
+
+// If product has an 'images' field (comma-separated paths), use it
+if(product.images){
+var imgPaths=product.images.split(',');
+for(var i=0;i<imgPaths.length;i++){
+var path=imgPaths[i].trim();
+if(path) gallery.push({img:path,name:product.name});
+}
+}
+
+// Fallback: collect from all products with same model
+if(gallery.length===0){
+for(var i=0;i<ALL_PRODUCTS.length;i++){
+if(ALL_PRODUCTS[i].model===product.model && ALL_PRODUCTS[i].img){
+gallery.push({img:ALL_PRODUCTS[i].img,name:ALL_PRODUCTS[i].name});
+}
+}
+}
+
+// Final fallback
+if(gallery.length===0) gallery.push({img:product.img,name:product.name});
+
+// Remove duplicates
+var seen={},uniqueGallery=[];
+for(var i=0;i<gallery.length;i++){
+if(!seen[gallery[i].img]){
+seen[gallery[i].img]=true;
+uniqueGallery.push(gallery[i]);
+}
+}
+
+// Put current product image first
+var currentImg=product.img;
+var firstIdx=-1;
+for(var i=0;i<uniqueGallery.length;i++){
+if(uniqueGallery[i].img===currentImg){
+firstIdx=i;
+break;
+}
+}
+if(firstIdx>0){
+var current=uniqueGallery.splice(firstIdx,1)[0];
+uniqueGallery.unshift(current);
+}
+
+return uniqueGallery;
+}
+function restartThumbTimer(){
+clearInterval(thumbTimer);
+var count=document.getElementById('detailThumbs').querySelectorAll('.thumb-item').length;
+if(count>1){
+thumbTimer=setInterval(function(){
+thumbIdx=(thumbIdx+1)%count;
+applyThumb(thumbIdx);
+},3000);
+}
+}
+function showDetail(pid){
+clearCarousels();
+var p=null;
+for(var i=0;i<ALL_PRODUCTS.length;i++){if(ALL_PRODUCTS[i].id===pid){p=ALL_PRODUCTS[i];break;}}
+if(!p) return;
+currentDetailProduct=p;
+/* show detail page */
+var pages=document.querySelectorAll('.page-section');
+for(var i=0;i<pages.length;i++) pages[i].classList.remove('active');
+document.getElementById('page-detail').classList.add('active');
+window.scrollTo({top:0,behavior:'smooth'});
+/* fill info */
+document.getElementById('detailMainImg').src=p.img;
+document.getElementById('detailMainImg').alt=p.name;
+document.getElementById('detailName').textContent=p.name;
+document.getElementById('detailDesc').textContent=p.desc;
+document.getElementById('detailBreadcrumb').textContent=p.name;
+var catLabel=document.getElementById('detailCat');
+catLabel.textContent=CATEGORY_NAMES[p.cat]||p.cat;
+catLabel.dataset.cat=p.cat;
+var catLink=document.getElementById('detailCatLink');
+catLink.textContent=CATEGORY_NAMES[p.cat]||p.cat;
+catLink.dataset.cat=p.cat;
+/* tabs */
+document.getElementById('tabDesc').innerHTML=buildDetailDescriptionHtml(p);
+document.getElementById('tabSpecs').innerHTML=buildDetailSpecsHtml(p);
+document.getElementById('detailInquireBtn').textContent='Add to Inquire';
+document.getElementById('tabDesc').style.display='';
+document.getElementById('tabSpecs').style.display='none';
+var tabBtns=document.querySelectorAll('.tab-btn');
+tabBtns[0].classList.add('active');
+if(tabBtns[1]) tabBtns[1].classList.remove('active');
+/* thumbnails - product gallery */
+var gallery=getDetailGallery(p);
+var thumbWrap=document.querySelector('.thumb-carousel');
+var thumbTrack=document.getElementById('detailThumbs');
+var thumbHtml='';
+thumbIdx=0;
+for(var i=0;i<gallery.length;i++){
+var act=gallery[i].img===p.img?' active':'';
+thumbHtml+='<div class="thumb-item'+act+'" data-idx="'+i+'" onclick="selectThumb('+i+')">'
++'<img src="'+esc(gallery[i].img)+'" alt="'+esc(gallery[i].name)+'" loading="lazy"></div>';
+if(gallery[i].img===p.img) thumbIdx=i;
+}
+thumbTrack.innerHTML=thumbHtml;
+thumbTrack.style.transform='translateX(0)';
+if(gallery.length>1) thumbWrap.classList.remove('is-hidden');
+else thumbWrap.classList.add('is-hidden');
+applyThumb(thumbIdx);
+restartThumbTimer();
+/* related products */
+var related=ALL_PRODUCTS.filter(function(x){return x.cat===p.cat&&x.id!==p.id;});
+var relTrack=document.getElementById('relatedTrack');
+var relHtml='';
+for(var i=0;i<related.length;i++){
+relHtml+='<div class="related-card" onclick="showDetail(\''+related[i].id+'\')">'
++'<img src="'+esc(related[i].img)+'" alt="'+esc(related[i].name)+'" loading="lazy">'
++'<div class="related-card-body">'
++'<div class="cat">'+(CATEGORY_NAMES[related[i].cat]||related[i].cat)+'</div>'
++'<h4>'+esc(related[i].name)+'</h4>'
++'<div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>'
++'<a class="read-more-btn" href="#">Read More</a>'
++'</div></div>';
+}
+relTrack.innerHTML=relHtml;
+relTrack.style.transform='translateX(0)';
+relatedIdx=0;
+/* start related auto-carousel */
+if(related.length>4){
+relatedTimer=setInterval(function(){moveRelated(1);},4000);
+}
+}
+function applyThumb(idx){
+var track=document.getElementById('detailThumbs');
+var items=track.querySelectorAll('.thumb-item');
+if(!items.length) return;
+if(idx<0) idx=items.length-1;
+if(idx>=items.length) idx=0;
+thumbIdx=idx;
+for(var i=0;i<items.length;i++) items[i].classList.remove('active');
+items[idx].classList.add('active');
+/* update main image */
+var img=items[idx].querySelector('img');
+if(img) document.getElementById('detailMainImg').src=img.src;
+/* scroll track */
+var step=(items[0].offsetWidth||80)+parseInt(window.getComputedStyle(track).gap||10,10);
+var visibleW=track.parentElement?track.parentElement.offsetWidth:0;
+var targetOffset=Math.max(0,(idx*step)-Math.max(0,(visibleW-step)/2));
+var maxOff=Math.max(0,track.scrollWidth-visibleW);
+if(targetOffset>maxOff) targetOffset=maxOff;
+track.style.transform='translateX(-'+targetOffset+'px)';
+}
+function selectThumb(idx){
+applyThumb(idx);
+restartThumbTimer();
+}
+
+/* === HERO SLIDER === */
+var heroIdx=0,heroTotal=0,heroTimer=null;
+function moveHero(dir){
+heroIdx+=dir;
+if(heroIdx<0) heroIdx=heroTotal-1;
+if(heroIdx>=heroTotal) heroIdx=0;
+updateHero();
+resetHeroTimer();
+}
+function goHero(idx){
+heroIdx=idx;
+updateHero();
+resetHeroTimer();
+}
+function updateHero(){
+var track=document.getElementById('heroTrack');
+if(track) track.style.transform='translateX(-'+(heroIdx*100)+'%)';
+var dots=document.querySelectorAll('.hero-dot');
+for(var i=0;i<dots.length;i++) dots[i].classList.remove('active');
+if(dots[heroIdx]) dots[heroIdx].classList.add('active');
+}
+function resetHeroTimer(){
+clearInterval(heroTimer);
+heroTimer=setInterval(function(){moveHero(1);},5000);
+}
+function initHero(){
+heroTotal=document.querySelectorAll('.hero-slide').length;
+if(heroTotal>0) resetHeroTimer();
+}
+
+/* === CAROUSEL RELATED === */
+function moveRelated(dir){
+var track=document.getElementById('relatedTrack');
+var cards=track.querySelectorAll('.related-card');
+if(!cards.length) return;
+var cardW=cards[0].offsetWidth+24;
+var visible=Math.floor(track.parentElement.offsetWidth/cardW)||1;
+var maxIdx=cards.length-visible;
+if(maxIdx<0) maxIdx=0;
+relatedIdx+=dir;
+if(relatedIdx>maxIdx) relatedIdx=0;
+if(relatedIdx<0) relatedIdx=maxIdx;
+track.style.transform='translateX(-'+(relatedIdx*cardW)+'px)';
+clearInterval(relatedTimer);
+if(cards.length>visible){
+relatedTimer=setInterval(function(){moveRelated(1);},4000);
+}
+}
+
+/* === TABS, FAQ, MOBILE, SCROLL, CONTACT, INIT === */
+function switchTab(tabId,btn){
+document.getElementById('tabDesc').style.display='none';
+document.getElementById('tabSpecs').style.display='none';
+document.getElementById(tabId).style.display='';
+var btns=document.querySelectorAll('.tab-btn');
+for(var i=0;i<btns.length;i++) btns[i].classList.remove('active');
+if(btn) btn.classList.add('active');
+}
+function toggleMobileNav(){
+document.getElementById('mobileNav').classList.toggle('open');
+}
+/* Scroll-to-top */
+window.addEventListener('scroll',function(){
+var btn=document.getElementById('scrollTop');
+if(window.scrollY>300) btn.classList.add('show');
+else btn.classList.remove('show');
+});
+/* Contact form */
+(function(){
+var forms=document.querySelectorAll('.contact-form-wrap form');
+for(var i=0;i<forms.length;i++){
+forms[i].addEventListener('submit',function(e){
+e.preventDefault();
+alert('Thank you for your message!');
+});
+}
+})();
+/* Init */
+document.addEventListener('DOMContentLoaded',function(){
+renderHomeProducts();
+initHero();
+});
+</script>
+</body>
+</html>
